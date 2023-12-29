@@ -21,5 +21,5 @@ After this steps you should have the container listening on port 8000 for reques
 
 ### Steps
 1. Copy the .env.example file and rename it as .env
-2. Run ```composer install`` to install the dependencies
+2. Run ```composer install``` to install the dependencies
 3. Run ```php artisan serve --port 8000``` to have the application listening on port 8000
