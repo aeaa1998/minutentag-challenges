@@ -99,7 +99,7 @@ class LetterCounter
      * @param bool $caseSensitive We add this optional boolean that tells if the count should be case sensitive or not default: false.
      * @return array Array with the frequency of the values
      */
-    public static function CountLettersAsString(string $text, bool $caseSensitive = false): array
+    public static function CountLettersAsString(string $text, bool $caseSensitive = false): string
     {
         //If it is not case sensitive we will lowercase the text
         if (!$caseSensitive) {
@@ -112,14 +112,18 @@ class LetterCounter
         foreach (mb_str_split($text) as $key => $character) {
             //If the key of the character is not set it's meaning is the first time it appears so we set the value to one
             if (!isset($frequency[$character])) {
-                $frequency[$character] = 1;
+                $frequency[$character] = "*";
             } else {
                 //Else just increment the value by one
-                $frequency[$character] += 1;
+                $frequency[$character] .= "*";
             }
         }
 
-        return $frequency;
+        return implode(",", array_map(function ($key) use ($frequency) {
+            $value = $frequency[$key];
+
+            return "$key:$value";
+        }, array_keys($frequency)));
     }
 }
 
@@ -218,10 +222,10 @@ function printYesNoTableResults(): void
  */
 // echo "------ EXCERSISE #2 ----- \n";
 // echo "Test value count (case insensitive): \n";
-// var_dump(LetterCounter::CountLettersAsString("Test"));
+// echo LetterCounter::CountLettersAsString("Test");
 // echo "\n";
 // echo "Test value count (case sensitive): \n";
-// var_dump(LetterCounter::CountLettersAsString("Test", true));
+// echo LetterCounter::CountLettersAsString("Test", true);
 // echo "\n";
 // echo "\n";
 
