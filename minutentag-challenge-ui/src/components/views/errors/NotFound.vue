@@ -7,7 +7,8 @@ const router = useRouter()
     <p class="font-sans text-primary-700 error-text text-center">404</p>
     <p class="text-primary-600 mx-auto w-full px-8 text-center">The view that you where looking for does not seem to exist
       in our records we are sorry for the trouble.</p>
-    <button @click="router.back()" class="bg-secondary text-white rounded-lg py-2 px-24 w-fit">Go back</button>
+    <button @click="router.push({ name: 'Home' })" class="bg-secondary text-white rounded-lg py-2 px-24 w-fit">Go back
+      home</button>
   </div>
 </template>
 <style>
